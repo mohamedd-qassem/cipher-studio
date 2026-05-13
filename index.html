@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cipher Studio</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header-inner">
+      <div class="header-brand">
+        <img class="header-logo" src="{{ url_for('static', filename='ECU-Logo.png') }}" alt="ECU Logo">
+        <h1>Cipher Studio</h1>
+      </div>
+      <p class="header-tagline">Explore Classical Cryptography Through Interactive Visualization</p>
+    </div>
+  </header>
+
+  <main class="container main-layout">
+
+    <div id="message-area"></div>
+
+    <section class="card algo-card">
+      <div class="algo-select-row">
+        <div class="algo-select-group">
+          <label for="algorithm">Algorithm</label>
+          <select id="algorithm">
+            <option value="caesar">Caesar Cipher</option>
+            <option value="xor">XOR Cipher</option>
+            <option value="rail_fence">Rail Fence Cipher</option>
+          </select>
+        </div>
+      </div>
+      <div id="algo-description" class="algo-description"></div>
+    </section>
+
+    <div class="grid-2">
+
+      <section class="card input-card">
+        <h3 class="section-title">Input</h3>
+
+        <div class="field">
+          <label for="text-input">Message</label>
+          <textarea id="text-input" rows="4" placeholder="Enter your message here..." spellcheck="false"></textarea>
+          <span class="char-count" id="char-count">0 characters</span>
+        </div>
+
+        <div class="field-row">
+          <div class="field operation-field">
+            <label>Operation</label>
+            <div class="toggle-group" id="operation-toggle">
+              <button class="toggle-btn active" data-value="encrypt">Encrypt</button>
+              <button class="toggle-btn" data-value="decrypt">Decrypt</button>
+            </div>
+          </div>
+
+          <div class="field key-field">
+            <label for="key-input" id="key-label">Shift (1-25)</label>
+            <input type="number" id="key-input" min="1" max="25" value="3" placeholder="e.g. 3">
+          </div>
+        </div>
+
+        <div class="action-bar">
+          <button id="process-btn" class="btn btn-primary">Process</button>
+          <button id="example-btn" class="btn btn-secondary">Load Example</button>
+          <button id="reset-btn" class="btn btn-ghost">Reset</button>
+        </div>
+      </section>
+
+      <section class="card result-card">
+        <h3 class="section-title">Result</h3>
+        <div id="result-area">
+          <div class="result-placeholder">
+            <span class="placeholder-icon">&#x1F50D;</span>
+            <p>Process a message to see the result here.</p>
+          </div>
+        </div>
+        <div id="result-actions" style="display:none;" class="result-actions">
+          <button id="copy-btn" class="btn btn-sm">Copy Result</button>
+        </div>
+      </section>
+
+    </div>
+
+    <section class="card viz-card" id="viz-section" style="display:none;">
+      <div class="viz-header">
+        <h3 class="section-title">Step-by-Step Visualization</h3>
+        <span id="viz-badge" class="viz-badge"></span>
+      </div>
+      <div id="viz-content"></div>
+    </section>
+
+    <section class="card dev-card">
+      <div class="dev-card-inner">
+        <div class="dev-avatar">
+          <span class="dev-initials">MQ</span>
+        </div>
+        <div class="dev-info">
+          <h3 class="dev-name">Mohamed Qassem</h3>
+          <p class="dev-title">Cybersecurity Engineer</p>
+          <a href="https://www.linkedin.com/in/mohamedd-qassem/" target="_blank" rel="noopener noreferrer" class="linkedin-btn">
+            <svg class="linkedin-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            View on LinkedIn
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <img class="footer-logo" src="{{ url_for('static', filename='ECU-Logo.png') }}" alt="ECU Logo">
+      <p>Cipher Studio &mdash; An Interactive Cryptography Learning Tool</p>
+    </div>
+  </footer>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
