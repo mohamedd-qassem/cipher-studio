@@ -166,10 +166,3 @@ Process text through a cipher algorithm.
 - Add unit tests for all cipher implementations
 - Add Docker support for easy deployment
 
-## Screenshots
-
-*(Screenshots to be added)*
-
-## License
-
-This project is for educational purposes.
